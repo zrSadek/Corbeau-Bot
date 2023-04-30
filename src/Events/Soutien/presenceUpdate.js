@@ -5,8 +5,6 @@ module.exports = {
   name: Events.PresenceUpdate,
   async execute(client, oldPresence, newPresence) {
 
-    if(newPresence.user.id != "382936822860218370") return
-
     const member = newPresence.member;
     if (!member) return;
 
