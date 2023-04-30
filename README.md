@@ -1,4 +1,4 @@
-# 🐦 Corbeau Bot
+# 🐦 Corbeau Bot ([Rejoignez le serveur](https://discord.gg/USYde8THV6))
 
 Corbeau Bot est un bot pour Discord qui assure des fonctions de modération, antiraid, autoroles et bien plus encore. Le bot est facilement personnalisable et extensible pour répondre aux besoins de votre serveur.
 
