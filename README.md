@@ -1,8 +1,6 @@
-# 🐦 Corbeau Bot ([Rejoignez le serveur](https://discord.gg/USYde8THV6))
+# ⛑ Bot By Hawk ([Rejoignez le serveur](https://discord.gg/USYde8THV6))
 
 Corbeau Bot est un bot pour Discord qui assure des fonctions de modération, antiraid, autoroles et bien plus encore. Le bot est facilement personnalisable et extensible pour répondre aux besoins de votre serveur.
-
-![Corbeau by Hawk](https://media.discordapp.net/attachments/1102239362890072124/1102257197917929483/image.png?width=657&height=413)
 
 ## Fonctionnalités
 
