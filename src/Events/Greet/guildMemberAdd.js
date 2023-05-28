@@ -34,6 +34,7 @@ module.exports = {
             .replaceAll("[server.channels]", `${member.guild.channels.cache.size}`)
             .replaceAll("[server.boosts]", `${member.guild.premiumSubscriptionCount}`)
             .replaceAll("[server.onlines]", `${member.guild.members.cache.filter(m => m.presence.status === "online").size}`)
+            .replaceAll("[server.voice]", `${guild.members.cache.filter(m => m.voice.channel).size}`)
         })
         .then((msg) => {
             setTimeout(() => { msg.delete().catch(err => {}) }, data.time * 1000)

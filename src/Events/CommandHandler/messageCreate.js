@@ -4,7 +4,7 @@ const db = require("../../../index")
 module.exports = {
   name: "messageCreate",
   async execute(client, message) {
-    const prefix = client.prefix || "+";
+    const prefix = client.prefix || "!";
 
     let embed = client.template;
     embed.data.description = "`🚨` Mon prefix actuel est **`" + prefix + "`**.";
@@ -21,7 +21,7 @@ module.exports = {
     const commandFile = client.commands.get(cmd) || client.commands.find(c => c.help.aliases && c.help.aliases.includes(cmd));
     if (!commandFile) return;
 
-      let wlData = await db.get(`whitelist_${message.guild.id}`);
+      let wlData = await db.get(`whitelist_${message.guild.id}`) || [];
     let owner = await message.guild.fetchOwner();
     let perms = await db.get(`perms_${message.guild.id}`) || { perms2: [], perms3: []}
 
@@ -40,12 +40,12 @@ module.exports = {
         break;
       
       case 3:
-        if(message.author.id != owner.id && !wlData.includes(message.author.id) && !data.perms3.includes(message.author.id)) return;
+        if(message.author.id != owner.id && !wlData.includes(message.author.id) && !perms.perms3.includes(message.author.id)) return;
         
         break;
 
       case 2:
-        if(message.author.id != owner.id && !wlData.includes(message.author.id) && !data.perms2.includes(message.author.id)) return;
+        if(message.author.id != owner.id && !wlData.includes(message.author.id) && !perms.perms2.includes(message.author.id)) return;
 
         break;
 

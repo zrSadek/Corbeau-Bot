@@ -5,7 +5,7 @@ module.exports = {
     name: Events.UserUpdate,
     async execute(client, oldUser, newUser) {
         if (oldUser.username != newUser.username) {
-            db.push(`prevname_${oldUser.id}`, `${oldUser.username}/${Math.floor(Date.now() / 1000)}`);
+            db.set(`prevname_${oldUser.id}`, `${oldUser.username}/${Math.floor(Date.now() / 1000)}`);
           }
     }
 }

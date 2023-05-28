@@ -1,46 +1,25 @@
-const {
-    EmbedBuilder
-  } = require("discord.js")
-  
-  exports.help = {
+const { EmbedBuilder } = require("discord.js")
+
+exports.help = {
     name: 'pp',
-    description: "permet d'obtenir la photo de profil d'un utilisateur.",
+    aliases: ["avatar", "pic"],
+    description: "permet d'obtenir la pp de quelqu'un.",
     perms: 1,
-  }
-  
-  exports.run = async (client, message, args) => {
-    const embed = client.template
-    embed.data.description = "`❌` Vous devez mentionner l'utilisateur ou fournir son identifiant."
-  
-    let target;
-    if (message.mentions.members.first()) {
-      target = message.mentions.members.first().user;
-    }
-    else if(args[0]) {
-      target = await client.users.cache.get(args[0])
-    } else {
-        target = message.author
-    }
-  
-    if (!target) return message.reply({
-      embeds: [embed]
-    })
-  
-    const embedPp = new EmbedBuilder()
-      .setColor(client.color)
-      .setTitle(target.tag)
-      .setImage(target.displayAvatarURL({
-        format: 'png',
-        dynamic: true,
-        size: 1024
-      }))
-      .setTimestamp()
-      .setFooter({
-        text: client.footer
-    })
-  
-    message.reply({
-      embeds: [embedPp]
-    })
-  
-  }
+}
+
+exports.run = async (client, message, args) => {
+
+        let user;
+        if(message.user ? args[0].length >= 1 : args >= 1) {
+            user = message.user ? await client.users.fetch(message.mentions.users.first().id) : (message.mentions.users.first() || await client.users.fetch(args[0]))
+        } else user =  message.mentions.users.first() || args[0] || message.author 
+    
+          if(!user) return;
+
+          const bannerEmbed = new EmbedBuilder()
+            .setColor("Blurple")
+            .setDescription(`${user.tag} | (\`${user.id}\`)`)
+            .setImage(user.displayAvatarURL({dynamic: true, size: 4096}))
+       
+         await message.channel.send({embeds: [bannerEmbed]}); 
+}

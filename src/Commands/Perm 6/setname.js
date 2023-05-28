@@ -8,7 +8,7 @@ const {
     description: "Te permet de changer le pseudo du bot.",
     aliases: ["setusername"],
     usage: "<name>",
-    example: "corbeau bot",
+    example: "Eather bot",
     perms: 6,
   }
   

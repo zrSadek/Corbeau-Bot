@@ -8,7 +8,7 @@ exports.help = {
   aliases: ["perm"],
   description: "Permet de configurer les permissions.",
   usage: "<add/remove> <2/3> <user>",
-  example: "add 3 @'Hawk",
+  example: "add 3 @sadek",
   perms: 4,
 };
 
@@ -61,7 +61,7 @@ exports.run = async (client, message, args) => {
             return message.reply({ embeds: [temp] })
           }
 
-          data.perms2.push(member.id)
+          data.perms3.push(member.id)
           await db.set(`perms_${message.guild.id}`, { perms3: data.perms3, perms2: data.perms2 })
 
           temp.data.description = "`✅` Utilisateur ajouté à la permission 3."

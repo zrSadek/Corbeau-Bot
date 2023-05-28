@@ -6,7 +6,7 @@ exports.help = {
     aliases: ["deleterole", "del", "remove"],
     description: "Permet de retirer un rôle à un membre.",
     usage: "<@user/id> <@role/id>",
-    example: "@'Hawk @Corbeau",
+    example: "@Sadek @role",
     perms: 2,
 };
 

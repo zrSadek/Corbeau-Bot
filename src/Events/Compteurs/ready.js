@@ -16,6 +16,7 @@ module.exports = {
                     .replaceAll("[server.boosts]", `${guild.premiumSubscriptionCount}`)
                     .replaceAll("[server.onlines]", `${guild.members.cache.filter(m => m.presence && m.presence.status != "offline").size}`)
                     .replaceAll("[server.memberCount]", `${guild.memberCount}`)
+                    .replaceAll("[server.voice]", `${guild.members.cache.filter(m => m.voice.channel).size}`)
                 })
             })
         })

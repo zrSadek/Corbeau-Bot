@@ -3,6 +3,7 @@ const db = require("../../../index.js")
 
 exports.help = {
     name: 'variables',
+    aliases: ["var"],
     description: "Renvoit la liste des variables disponibles.",
     perms: 1,
 }
@@ -31,6 +32,7 @@ exports.run = async (client, message, args) => {
             { name: "[server.channels]", value: "Renvoit le nombre de salons du serveur.", inline: true },
             { name: "[server.roles]", value: "Renvoit le nombre de rôles du serveur.", inline: true },
             { name: "[server.createdAt]", value: "Renvoit la date de création du serveur.", inline: true },
+            { name: "[server.voice]", value: "Renvoit le nombre de membres en voc", inline: true },
           )
         ]
     })

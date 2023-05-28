@@ -9,4 +9,5 @@ exports.help = {
 
 exports.run = async (client, message, args) => {
     // a faire en dernier ngl
+    message.channel.send("Flemme de finir la cmd")
 }

@@ -10,7 +10,7 @@ const {
   
   exports.help = {
     name: 'setcounter',
-    aliases: ["setcompteur", "compteur"],
+    aliases: ["setcompteur", "compteur", "counter", "counters"],
     description: "Permet d'ajouter ou supprimer un compteur.",
     usage: "<channel> <del>",
     example: "#salon",

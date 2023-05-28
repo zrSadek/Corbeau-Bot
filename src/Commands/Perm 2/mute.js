@@ -6,7 +6,7 @@ exports.help = {
     aliases: ["to", "timeout"],
     description: "Permet de mute un utilisateur en l'excluant temporairement.",
     usage: "<@user> <temps>",
-    example: "@Hawk 12h",
+    example: "@Sadek 12h",
     perms: 2,
 };
 

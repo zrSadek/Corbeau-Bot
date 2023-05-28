@@ -6,7 +6,7 @@ exports.help = {
     name: 'ban',
     description: "Permet de ban un Utilisateur.",
     usage: "<user/id>",
-    example: "@Hawk / 382936822860218370",
+    example: "@Sadek / 513066398847729696",
     perms: 2,
 }
 
@@ -34,8 +34,8 @@ exports.run = async (client, message, args) => {
     embed.data.description = "`❌` Je n'ai pas trouvé d'utilisateur à bannir."
 
     let userToBan;
-    if (message.mentions.member && message.mentions.members.first()) {
-      userToBan = message.mentions.members.first()
+    if (message.mentions.member && message.mentions.users.first()) {
+      userToBan = message.mentions.users.first()
     } else {
       userToBan = await client.users.fetch(args[0]).catch(err => {})
     }    

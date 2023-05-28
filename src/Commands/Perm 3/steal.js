@@ -2,9 +2,9 @@ const { parseEmoji } = require('discord.js');
 const axios = require('axios');
 
 exports.help = {
-  name: 'steal',
-  description: 'Permet de voler un emoji.',
-  aliases: ['steal'],
+  name: 'create',
+  description: 'Permet de créer un emoji.',
+  aliases: ['steal', 'add'],
   usage: '<emoji>',
   example: '<:trash:1098999012125855814>',
   perms: 3,
@@ -30,7 +30,7 @@ exports.run = async (client, message, args) => {
 
   message.guild.emojis.create({ attachment: url, name: customEmojis.name})
   .then(() => {
-    embed.data.description = "Emoj volé avec succès !"
+    embed.data.description = "Emoj créer avec succès !"
     message.reply({ embeds: [embed] });
   })
   .catch((err) => {

@@ -5,7 +5,7 @@ exports.help = {
     description: " permet de poser une quesiton au bot si t'as pas d'amis.",
     perms: 1,
     usage: "<question>",
-    example: "es-que karma est gay ?"
+    example: "es-que desync est gay ?"
 }
 
 exports.run = async (client, message) => {

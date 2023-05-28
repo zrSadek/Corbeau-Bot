@@ -8,7 +8,7 @@ client.guilds.cache.forEach((g) => {
     console.log(g.name)
 })
         let status = await db.get(`bot_${client.user.id}`)
-        status = status && status.status ? status.status : `${client.users.cache.size} membres | v1.0.2`
+        status = status && status.status ? status.status : `${client.users.cache.size} membres | v1.0.3`
 
         client.user.setPresence({
             activities: [{ name: status, type: ActivityType.Watching }],

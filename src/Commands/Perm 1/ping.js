@@ -2,6 +2,7 @@ const { EmbedBuilder } = require("discord.js")
 
 exports.help = {
     name: 'ping',
+    aliases: ["speed"],
     description: "permet d'obtenir la latence du bot.",
     perms: 1,
 }

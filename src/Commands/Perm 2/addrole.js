@@ -1,56 +1,35 @@
 const { EmbedBuilder } = require("discord.js")
-const ms = require("ms")
 
 exports.help = {
-    name: "addrole",
-    aliases: ["roleadd", "add"],
-    description: "Permet d'ajouter un rôle à un membre.",
-    usage: "<@user/id> <@role/id>",
-    example: "@'Hawk @Corbeau",
+    name: 'addrole',
+    aliases: ["ar"],
+    description: "permet d'ajouter un role à un membre",
     perms: 2,
-};
+}
 
 exports.run = async (client, message, args) => {
-    const embed = client.template
-    embed.data.description = "`❌` Je n'ai pas trouvé cet utilisateur."
 
-    let member;
-    if (message.mentions.members && message.mentions.members.first()) {
-        member = message.mentions.members.first();
-    } else {
-        member = await message.guild.members.cache.get(args[0])
-    }    
-
-    if (!member) return message.channel.send({embeds: [embed]})
-
-    let role;
-    if (message.mentions.roles && message.mentions.roles.first()) {
-        role = message.mentions.roles.first();
-    } else {
-        role = await message.guild.roles.cache.get(args[1])
-    }    
-
-    embed.data.description = "`❌` Je n'ai pas trouvé ce rôle."
-    if (!role) return message.channel.send({embeds: [embed]})
-
-    if(message.member.roles.highest.position <= role.position) {
-        embed.data.description = "`❌` Vous devez être hierarchiquement supérieur à ce rôle."
-        return message.channel.send({embeds: [embed]})
-    }
-
-    if(member.roles.cache.has(role.id)) {
-        embed.data.description = "`❌` Ce membre a déjà le rôle <@&" + role.id + ">."
-        return message.channel.send({embeds: [embed]})
-    }
-
-    member.roles.add(role)
-    .then(() => {
-        embed.data.description = "`✅` Le rôle <@&" + role.id + "> a été ajouté avec succès à " + member.user.tag
-        message.channel.send({embeds: [embed]})
-    })
-    .catch(err => {
-        embed.data.description = "`❌` Une erreur est survenue (le rôle est peut être trop haut par rapport au bot)."
-        message.channel.send({embeds: [embed]})
-    })
-
-}
+            client.prefix || "!"
+    
+            if (args.length < 2) {
+                return message.reply(`Usage: \`${prefix}addrole @role/id/nom @user\``);
+            }
+    
+            const role = message.mentions.roles.first() || message.guild.roles.cache.get(args[0]) || message.guild.roles.cache.find(role => role.name === args[0]);
+    
+            if (!role) {
+                return message.reply(`Veuillez spécifier un rôle à ajouter. Usage: \`${prefix}addrole @role/id/nom @user\``);
+            }
+    
+            const user = message.mentions.members.first() || message.guild.members.cache.get(args[1]);
+    
+            if (!user) {
+                return message.reply(`Veuillez spécifier un utilisateur. Usage: \`${prefix}addrole @role/id/nom @user\``);
+            }
+    
+            user.roles.add(role).then(() => {
+                message.reply(`Le rôle \`${role.name}\` a été ajouté à ${user.displayName}.`);
+            }).catch(() => {
+                message.reply('Une erreur est survenue lors de l\'ajout du rôle. Veuillez vérifier que le rôle est assignable et que le bot a les permissions nécessaires.');
+            });
+        }

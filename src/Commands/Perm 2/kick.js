@@ -2,7 +2,7 @@ exports.help = {
     name: 'kick',
     description: "Permet de kick un utilisateur.",
     usage: "<user/id>",
-    example: "@Hawk | 382936822860218370",
+    example: "@Sadek | 513066398847729696",
     perms: 2,
 }
 
