@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
     user = message.mentions.users.first();
   }
   else if (args[0]) {
-    user = await client.users.fetch(args[1])
+    user = await client.users.fetch(args[0])
   }
   else {
     user = message.author;
