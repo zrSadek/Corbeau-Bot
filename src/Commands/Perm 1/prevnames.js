@@ -33,16 +33,7 @@ exports.run = async (client, message, args) => {
     }).catch(err => {})
   }
   else {
-  let user;
-  if (message.mentions.users.first()) {
-    user = message.mentions.users.first();
-  }
-  else if (args[0]) {
-    user = await client.users.fetch(args[0])
-  }
-  else {
-    user = message.author;
-  }
+  let user = message.mentions.users.first() || await client.users.fetch(args[0]) || message.author
     let usernames = await db.get(`prevname_${user.id}`);
     if (!usernames) {
       templateEmbed.data.description = "`❌` Aucune donnée trouvé pour <@" + user.id + ">.";
